@@ -1,15 +1,11 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "#root",
+  selector: "app-root",
   templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  public auth: {
-    token: "";
-    user: {};
-    meta: {};
-  };
+  public auth: any;
 
   constructor() {
     this.auth = {
@@ -21,6 +17,9 @@ export class AppComponent {
 
   onLoginSuccess(auth: any) {
     this.auth = auth;
+    try {
+      sessionStorage.setItem('auth', JSON.stringify(auth));
+    } catch {}
   }
 
   onLogOut() {
@@ -29,5 +28,7 @@ export class AppComponent {
       user: {},
       meta: {}
     };
-  }
-}
+    try {
+      sessionStorage.removeItem('auth');
+    } catch {}
+  }}
