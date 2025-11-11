@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from "@angular/core";
-import { v4 as uuid } from "uuid";
+import * as uuid from "uuid";
 
 /******************************
  * Hardcoded Data for scenario *
@@ -46,7 +46,6 @@ const sampleBreaches = [{
   styleUrls: ["./login.component.scss"],
   templateUrl: "./login.component.html"
 })
-
 export class LoginComponent {
   @Output() onLoginSuccess = new EventEmitter<any>();
 
@@ -69,14 +68,14 @@ export class LoginComponent {
       this.state.loginFailed = false;
 
       this.onLoginSuccess.emit({
-        token: uuid(),
+        token: uuid.v4(),
         user: sampleUsers[0]
       });
     } else if (this.state.email === sampleUsers[1].email) {
       this.state.loginFailed = false;
 
       this.onLoginSuccess.emit({
-        token: uuid(),
+        token: uuid.v4(),
         user: sampleUsers[1],
         meta: {
           suggestPasswordChange: true,

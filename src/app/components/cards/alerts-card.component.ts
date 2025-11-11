@@ -8,20 +8,22 @@ type Breach = { name: string; addedDate: string };
 })
 export class AlertsCardComponent {
   // The auth object is created in login.component.ts (handleSubmit)
-  @Input() auth: { suggestPasswordChange?: boolean; breachedAccounts?: Breach[] } | null = null;
+  @Input() auth: any = null;
 
   get hasBreaches(): boolean {
     return !!(
-      this.auth?.suggestPasswordChange &&
-      Array.isArray(this.auth?.breachedAccounts) &&
-      this.auth!.breachedAccounts!.length > 0
+      this.auth?.meta?.suggestPasswordChange &&
+      Array.isArray(this.auth?.meta?.breachedAccounts) &&
+      this.auth.meta.breachedAccounts.length > 0
     );
   }
 
-  // Dismiss for this session (switch to “No alerts” state)
+  // Dismiss for this session (switch to "No alerts" state)
   dismiss() {
-    if (!this.auth) return;
-    this.auth.suggestPasswordChange = false;
-    try { sessionStorage.setItem('auth', JSON.stringify(this.auth)); } catch {}
+    if (!this.auth || !this.auth.meta) return;
+    this.auth.meta.suggestPasswordChange = false;
+    try {
+      sessionStorage.setItem('auth', JSON.stringify(this.auth));
+    } catch {}
   }
 }

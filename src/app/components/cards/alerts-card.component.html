@@ -10,14 +10,12 @@
 
 <!-- Has Breaches -->
 <div *ngIf="hasBreaches" class="card mb-3 bg-warning border-warning">
-  <div class="card-header fw-semibold">Alert!</div>
-
   <div class="card-body">
     <p class="mb-2">Your email was involved in a breach on the following sites:</p>
 
     <ul class="mb-3">
-      <li *ngFor="let b of auth!.breachedAccounts">
-        {{ b.addedDate | date:'yyyy-MM-dd\'T\'HH:mm:ss\'Z\'' }} — {{ b.name }}
+      <li *ngFor="let b of auth.meta.breachedAccounts">
+        {{ b.addedDate | date:'yyyy-MM-dd' }} — {{ b.name }}
       </li>
     </ul>
 
