@@ -51,7 +51,7 @@ AppCo is a dashboard application that integrates with a breach detection API to 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd angular
+cd Change_Password_Alert
 ```
 
 2. Install dependencies:
@@ -408,4 +408,4 @@ For questions or feedback about this implementation, please reach out through th
 
 ---
 
-**Built with ❤️ and lots of debugging by Sincere Brittany**
+**Built with ❤️ and lots of debugging by Sincere Brittany and ClaudeAI**
